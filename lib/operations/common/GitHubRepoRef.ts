@@ -63,7 +63,7 @@ export class GitHubRepoRef extends AbstractRemoteRepoRef {
         if (!isTokenCredentials(creds)) {
             throw new Error("Only token auth supported");
         }
-        return createRepo(creds.token, this, description, visibility === "private")
+        return createRepo(creds.token, this, description, visibility !== "public")
             .then(() => successOn(this));
     }
 
